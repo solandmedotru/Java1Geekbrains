@@ -1,7 +1,5 @@
 package xoGame;
 
-import java.util.Arrays;
-
 public class Field {
 
     public static final int WIDTH = 3;
@@ -32,15 +30,89 @@ public class Field {
         }
     }
 
-    public static boolean isHaveNotNextStep(){
+    public static boolean isHaveNextStep(){
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells[i].length; j++) {
                 if (cells[i][j].view == '.')
-                    return false;
+                    return true;
             }
         }
-        return true;
-        //return Arrays.asList(cells).contains('.');
+        return false;
+    }
+    public static boolean isHaveWinner(Player player, Ai ai){
+        if (cells[0][0].view == 'X' && cells[1][0].view == 'X' && cells[2][0].view == 'X') {
+            player.iswinner = true;
+            return true;
+        }
+        if (cells[0][0].view == 'O' && cells[1][0].view == 'O' && cells[2][0].view == 'O') {
+            ai.iswinner = true;
+            return true;
+        }
+
+        if (cells[0][1].view == 'X' && cells[1][1].view == 'X' && cells[2][1].view == 'X') {
+            player.iswinner = true;
+            return true;
+        }
+        if (cells[0][1].view == 'O' && cells[1][1].view == 'O' && cells[2][1].view == 'O') {
+            ai.iswinner = true;
+            return true;
+        }
+
+        if (cells[0][2].view == 'X' && cells[1][2].view == 'X' && cells[2][2].view == 'X') {
+            player.iswinner = true;
+            return true;
+        }
+        if (cells[0][2].view == 'O' && cells[1][2].view == 'O' && cells[2][2].view == 'O') {
+            ai.iswinner = true;
+            return true;
+        }
+
+        if (cells[0][0].view == 'X' && cells[0][1].view == 'X' && cells[0][2].view == 'X') {
+            player.iswinner = true;
+            return true;
+        }
+        if (cells[0][0].view == 'O' && cells[0][1].view == 'O' && cells[0][2].view == 'O') {
+            ai.iswinner = true;
+            return true;
+        }
+
+        if (cells[1][0].view == 'X' && cells[1][1].view == 'X' && cells[1][2].view == 'X') {
+            player.iswinner = true;
+            return true;
+        }
+        if (cells[1][0].view == 'O' && cells[1][1].view == 'O' && cells[1][2].view == 'O') {
+            ai.iswinner = true;
+            return true;
+        }
+
+        if (cells[2][0].view == 'X' && cells[2][1].view == 'X' && cells[2][2].view == 'X') {
+            player.iswinner = true;
+            return true;
+        }
+        if (cells[2][0].view == 'O' && cells[2][1].view == 'O' && cells[2][2].view == 'O') {
+            ai.iswinner = true;
+            return true;
+        }
+
+        if (cells[0][0].view == 'X' && cells[1][1].view == 'X' && cells[2][2].view == 'X') {
+            player.iswinner = true;
+            return true;
+        }
+        if (cells[0][0].view == 'O' && cells[1][1].view == 'O' && cells[2][2].view == 'O') {
+            ai.iswinner = true;
+            return true;
+        }
+
+        if (cells[0][2].view == 'X' && cells[1][1].view == 'X' && cells[2][0].view == 'X') {
+            player.iswinner = true;
+            return true;
+        }
+        if (cells[0][2].view == 'O' && cells[1][1].view == 'O' && cells[2][0].view == 'O') {
+            ai.iswinner = true;
+            return true;
+        }
+
+        return false;
     }
 
     public static boolean isValidXY(int x, int y){

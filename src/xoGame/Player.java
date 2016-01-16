@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Player {
     int x;
     int y;
+    boolean iswinner;
 
     public static void nextPlayerStep(Player player) {
         do {
@@ -16,7 +17,7 @@ public class Player {
             if (!Field.isValidXY(player.x, player.y)){
                 nextPlayerStep(player);
             }
-        } while (Field.isHaveNotNextStep() | Field.cells[player.x][player.y].view == 'X' & Field.cells[player.x][player.y].view == 'O' );
+        } while (!Field.isHaveNextStep() | Field.cells[player.x][player.y].view == 'X' & Field.cells[player.x][player.y].view == 'O' );
         Field.cells[player.x][player.y].view = 'X';
     }
 }
