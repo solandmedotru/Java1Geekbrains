@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Player {
     int x;
     int y;
-    boolean iswinner;
+    boolean isWinner;
 
     public static void nextPlayerStep(Player player) {
         do {

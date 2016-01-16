@@ -15,11 +15,11 @@ public class Main {
     }
 
     private static void showWinner(Player player, Ai ai) {
-        if (player.iswinner){
+        if (player.isWinner){
             Field.showXOField();
             System.out.println("Вы победили! Ура!");
         }
-        if (ai.iswinner){
+        if (ai.isWinner){
             Field.showXOField();
             System.out.println("Увы! Но вы проиграли!");
         }

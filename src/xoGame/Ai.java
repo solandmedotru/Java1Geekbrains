@@ -5,7 +5,7 @@ import java.util.Random;
 public class Ai {
     int x;
     int y;
-    boolean iswinner;
+    boolean isWinner;
 
     public static void nextAiStep(Ai ai) {
         do {

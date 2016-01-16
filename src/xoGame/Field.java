@@ -41,74 +41,74 @@ public class Field {
     }
     public static boolean isHaveWinner(Player player, Ai ai){
         if (cells[0][0].view == 'X' && cells[1][0].view == 'X' && cells[2][0].view == 'X') {
-            player.iswinner = true;
+            player.isWinner = true;
             return true;
         }
         if (cells[0][0].view == 'O' && cells[1][0].view == 'O' && cells[2][0].view == 'O') {
-            ai.iswinner = true;
+            ai.isWinner = true;
             return true;
         }
 
         if (cells[0][1].view == 'X' && cells[1][1].view == 'X' && cells[2][1].view == 'X') {
-            player.iswinner = true;
+            player.isWinner = true;
             return true;
         }
         if (cells[0][1].view == 'O' && cells[1][1].view == 'O' && cells[2][1].view == 'O') {
-            ai.iswinner = true;
+            ai.isWinner = true;
             return true;
         }
 
         if (cells[0][2].view == 'X' && cells[1][2].view == 'X' && cells[2][2].view == 'X') {
-            player.iswinner = true;
+            player.isWinner = true;
             return true;
         }
         if (cells[0][2].view == 'O' && cells[1][2].view == 'O' && cells[2][2].view == 'O') {
-            ai.iswinner = true;
+            ai.isWinner = true;
             return true;
         }
 
         if (cells[0][0].view == 'X' && cells[0][1].view == 'X' && cells[0][2].view == 'X') {
-            player.iswinner = true;
+            player.isWinner = true;
             return true;
         }
         if (cells[0][0].view == 'O' && cells[0][1].view == 'O' && cells[0][2].view == 'O') {
-            ai.iswinner = true;
+            ai.isWinner = true;
             return true;
         }
 
         if (cells[1][0].view == 'X' && cells[1][1].view == 'X' && cells[1][2].view == 'X') {
-            player.iswinner = true;
+            player.isWinner = true;
             return true;
         }
         if (cells[1][0].view == 'O' && cells[1][1].view == 'O' && cells[1][2].view == 'O') {
-            ai.iswinner = true;
+            ai.isWinner = true;
             return true;
         }
 
         if (cells[2][0].view == 'X' && cells[2][1].view == 'X' && cells[2][2].view == 'X') {
-            player.iswinner = true;
+            player.isWinner = true;
             return true;
         }
         if (cells[2][0].view == 'O' && cells[2][1].view == 'O' && cells[2][2].view == 'O') {
-            ai.iswinner = true;
+            ai.isWinner = true;
             return true;
         }
 
         if (cells[0][0].view == 'X' && cells[1][1].view == 'X' && cells[2][2].view == 'X') {
-            player.iswinner = true;
+            player.isWinner = true;
             return true;
         }
         if (cells[0][0].view == 'O' && cells[1][1].view == 'O' && cells[2][2].view == 'O') {
-            ai.iswinner = true;
+            ai.isWinner = true;
             return true;
         }
 
         if (cells[0][2].view == 'X' && cells[1][1].view == 'X' && cells[2][0].view == 'X') {
-            player.iswinner = true;
+            player.isWinner = true;
             return true;
         }
         if (cells[0][2].view == 'O' && cells[1][1].view == 'O' && cells[2][0].view == 'O') {
-            ai.iswinner = true;
+            ai.isWinner = true;
             return true;
         }
 
