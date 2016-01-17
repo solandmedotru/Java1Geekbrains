@@ -2,21 +2,20 @@ package battleShip;
 
 
 public class Field {
+    final int WIDTH = 10;
+    final int HEIGHT = 10;
+    Cell[][] cells = new Cell[WIDTH][HEIGHT];
 
-    public static final int WIDTH = 10;
-    public static final int HEIGHT = 10;
-    public static Cell[][] cells = new Cell[WIDTH][HEIGHT];
-
-    public static void initField() {
+    public void init(char ch) {
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells[i].length; j++) {
-                Cell cell = new Cell(i, j, '~');
+                Cell cell = new Cell(i, j, ch);
                 cells[i][j] = cell;
             }
         }
     }
 
-    public static void showField() {
+    public void show() {
         for (int i = 0; i < cells.length; i++) {
             System.out.print("\t" + i);
         }
