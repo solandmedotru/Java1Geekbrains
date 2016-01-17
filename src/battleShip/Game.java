@@ -2,16 +2,17 @@ package battleShip;
 
 
 public class Game {
-    Field playerField = new Field();
-    Field aiField = new Field();
+    Player player = new Player();
+    Ai ai = new Ai();
 
     public void loop(){
-        System.out.println("Поле ИГРОКА");
-        playerField.init('~');
-        playerField.show();
-        System.out.println("Поле КОМПЬЮТЕРА");
-        aiField.init('-');
-        aiField.show();
+        System.out.println("\t\t\tПоле ИГРОКА");
+        player.field.init('~');
+        player.field.show();
+        System.out.println();
+        System.out.println("\t\t\tПоле КОМПЬЮТЕРА");
+        ai.field.init('-');
+        ai.field.show();
     }
 
 }
