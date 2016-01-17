@@ -9,7 +9,7 @@ public class Field {
     public void init(char ch) {
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells[i].length; j++) {
-                Cell cell = new Cell(i, j, ch);
+                Cell cell = new Cell(i, j, ch, null, false);
                 cells[i][j] = cell;
             }
         }

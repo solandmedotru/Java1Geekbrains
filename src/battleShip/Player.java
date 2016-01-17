@@ -12,7 +12,7 @@ public class Player {
 
     public void setShips(){
         //TODO написать логику расстановки кораблей
-        field.cells[1][1].view = '#';
+        field.cells[1][2].view = '#';
 
     }
 }
