@@ -6,13 +6,22 @@ public class Game {
     Ai ai = new Ai();
 
     public void loop(){
+        init();
+        player.setShips();
+        ai.setShips();
+        show();
+    }
+
+    private void init() {
+        player.field.init('.');
+        ai.field.init('.');
+    }
+
+    private void show() {
         System.out.println("\t\t\tПоле ИГРОКА");
-        player.field.init('~');
         player.field.show();
         System.out.println();
         System.out.println("\t\t\tПоле КОМПЬЮТЕРА");
-        ai.field.init('-');
         ai.field.show();
     }
-
 }
