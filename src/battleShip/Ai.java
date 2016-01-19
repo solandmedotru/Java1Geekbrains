@@ -18,36 +18,29 @@ public class Ai {
                 ships.add(tempShip);
             }
         }
-        System.out.println(ships.size());
         while (ships.size() != 3) {
             Ship tempShip = new Ship(3, Point.getRandomPoint(field.WIDTH, field.HEIGHT), random.nextBoolean());
             addShipToArray(tempShip);
         }
-        System.out.println(ships.size());
         while (ships.size() != 6) {
             Ship tempShip = new Ship(2, Point.getRandomPoint(field.WIDTH, field.HEIGHT), random.nextBoolean());
             addShipToArray(tempShip);
         }
-        System.out.println(ships.size());
         while (ships.size() != 10) {
             Ship tempShip = new Ship(1, Point.getRandomPoint(field.WIDTH, field.HEIGHT), random.nextBoolean());
             addShipToArray(tempShip);
         }
-        System.out.println(ships.size());
         for (Ship ship : ships) {
             if (ship.isHorizontal) {
                 for (int i = ship.leftUp.x; i < ship.leftUp.x + ship.length; i++) {
                     field.cells[i][ship.leftUp.y].view = '\u2588'; //2B1A - потоплен
                 }
-
             }
             if (!ship.isHorizontal) {
                 for (int j = ship.leftUp.y; j < ship.leftUp.y + ship.length; j++) {
                     field.cells[ship.leftUp.x][j].view = '\u2588';
                 }
-
             }
-
         }
     }
 
