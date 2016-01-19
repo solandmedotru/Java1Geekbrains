@@ -7,8 +7,8 @@ public class Game {
 
     public void loop(){
         init();
-        player.setShips();
-        ai.createShips();
+        player.autoCreateShips();
+        ai.autoCreateShips();
         show();
     }
 
@@ -23,6 +23,7 @@ public class Game {
         System.out.println();
         System.out.println("\t\t\tПоле КОМПЬЮТЕРА");
         ai.field.show();
+
     }
 
 
