@@ -1,10 +1,9 @@
 package battleShip;
 
-
 public class Field {
     final int WIDTH = 10;
     final int HEIGHT = 10;
-    Cell[][] cells = new Cell[WIDTH][HEIGHT];
+    Cell[][] cells = new Cell[HEIGHT][WIDTH];
 
     public void init(char ch) {
         for (int i = 0; i < cells.length; i++) {
@@ -28,5 +27,19 @@ public class Field {
             }
             System.out.println();
         }
+    }
+
+    public boolean isNotOutOfRange(Ship ship) {
+        if (ship.isHorizontal) {
+            if (ship.leftUp.x + ship.length < HEIGHT) {
+                return true;
+            }
+        }
+        if (!ship.isHorizontal) {
+            if (ship.leftUp.y + ship.length < WIDTH) {
+                return true;
+            }
+        }
+        return false;
     }
 }

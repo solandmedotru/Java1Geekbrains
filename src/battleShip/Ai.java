@@ -1,55 +1,91 @@
 package battleShip;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Ai {
     Field field = new Field();
+    Random random = new Random();
 
-    Ship ship1_1 = new Ship(1);
-    Ship ship1_2 = new Ship(1);
-    Ship ship1_3 = new Ship(1);
-    Ship ship1_4 = new Ship(1);
-    Ship ship2_1 = new Ship(2);
-    Ship ship2_2 = new Ship(2);
-    Ship ship2_3 = new Ship(2);
-    Ship ship3_1 = new Ship(3);
-    Ship ship3_2 = new Ship(3);
-    Ship ship4_1 = new Ship(4);
+    ArrayList<Ship> ships = new ArrayList<>();
 
-    public void setShips() {
-        //TODO написать логику расстановки кораблей
-        setShip(ship4_1);
-        setShip(ship3_1);
-        setShip(ship3_2);
-        setShip(ship2_1);
-        setShip(ship2_2);
-        setShip(ship2_3);
-        setShip(ship1_1);
-        setShip(ship1_2);
-        setShip(ship1_3);
-        setShip(ship1_4);
+
+    public void createShips() {
+
+        while (ships.size() != 1) {
+            Ship tempShip = new Ship(4, Point.getRandomPoint(field.WIDTH, field.HEIGHT), random.nextBoolean());
+            if (field.isNotOutOfRange(tempShip)) {
+                ships.add(tempShip);
+            }
+        }
+        System.out.println(ships.size());
+        while (ships.size() != 3) {
+            Ship tempShip = new Ship(3, Point.getRandomPoint(field.WIDTH, field.HEIGHT), random.nextBoolean());
+            addShipToArray(tempShip);
+        }
+        System.out.println(ships.size());
+        while (ships.size() != 6) {
+            Ship tempShip = new Ship(2, Point.getRandomPoint(field.WIDTH, field.HEIGHT), random.nextBoolean());
+            addShipToArray(tempShip);
+        }
+        System.out.println(ships.size());
+        while (ships.size() != 10) {
+            Ship tempShip = new Ship(1, Point.getRandomPoint(field.WIDTH, field.HEIGHT), random.nextBoolean());
+            addShipToArray(tempShip);
+        }
+        System.out.println(ships.size());
+        for (int number = 0; number < ships.size(); number++) {
+            if (ships.get(number).isHorizontal) {
+                for (int i = ships.get(number).leftUp.x; i < ships.get(number).leftUp.x + ships.get(number).length; i++) {
+                    field.cells[i][ships.get(number).leftUp.y].view = '\u2588'; //2B1A - потоплен
+                }
+
+            }
+            if (!ships.get(number).isHorizontal) {
+                for (int j = ships.get(number).leftUp.y; j < ships.get(number).leftUp.y + ships.get(number).length; j++) {
+                    field.cells[ships.get(number).leftUp.x][j].view = '\u2588';
+                }
+
+            }
+
+        }
     }
 
-    private void setShip(Ship ship) {
-        Random random = new Random();
-        ship.positionX = random.nextInt(10);
-        ship.positionY = random.nextInt(10);
-        ship.isVerticalDirection = random.nextBoolean();
-
-        if (ship.isVerticalDirection) {
-            if (ship.isNotOutOfRange(ship, field)) {
-                for (int i = ship.positionX; i < ship.positionX + ship.size; i++) {
-                    field.cells[i][ship.positionY].view = '\u2588'; //2B1A - потоплен
-                    field.cells[i][ship.positionY].ship = ship;
+    private void addShipToArray(Ship tempShip) {
+        boolean intersect = false;
+        if (field.isNotOutOfRange(tempShip)) {
+            for (int i = 0; i < ships.size(); i++) {
+                if (tempShip.isIntersect(ships.get(i))) {
+                    intersect = true;
                 }
-            } else setShip(ship);
-        } else
-            if (ship.isNotOutOfRange(ship, field)) {
-                for (int j = ship.positionY; j < ship.positionY + ship.size; j++) {
-                    field.cells[ship.positionX][j].view = '\u2588';
-                    field.cells[ship.positionY][j].ship = ship;
-                }
-            } else setShip(ship);
-
+            }
+            if (!intersect) {
+                ships.add(tempShip);
+            }
+        }
     }
+
+
+    public void putShipToField(int number) {
+
+        ships.get(number).leftUp.x = random.nextInt(10);
+        ships.get(number).leftUp.y = random.nextInt(10);
+
+        if (ships.get(number).isHorizontal) {
+            if (field.isNotOutOfRange(ships.get(number))) {
+                for (int i = ships.get(number).leftUp.x; i < ships.get(number).leftUp.x + ships.get(number).length; i++) {
+                    field.cells[i][ships.get(number).leftUp.y].view = '\u2588'; //2B1A - потоплен
+                }
+            } else putShipToField(number);
+        }
+        if (!ships.get(number).isHorizontal) {
+            if (field.isNotOutOfRange(ships.get(number))) {
+                for (int j = ships.get(number).leftUp.y; j < ships.get(number).leftUp.y + ships.get(number).length; j++) {
+                    field.cells[ships.get(number).leftUp.x][j].view = '\u2588';
+                }
+            } else putShipToField(number);
+        }
+    }
+
 }
+
