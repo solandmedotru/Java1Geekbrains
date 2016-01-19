@@ -6,7 +6,6 @@ public class Point {
     int x;
     int y;
 
-
     static Point getRandomPoint(int maxX, int maxY) {
         Point tempPoint = new Point();
         Random random = new Random();

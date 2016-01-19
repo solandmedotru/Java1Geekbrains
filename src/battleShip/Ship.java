@@ -6,7 +6,6 @@ public class Ship {
     Point rightDown = new Point();
     boolean isHorizontal;
 
-
     public Ship(int length, Point leftUp, boolean isHorizontal) {
         this.length = length;
         this.leftUp = leftUp;

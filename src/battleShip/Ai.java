@@ -34,16 +34,16 @@ public class Ai {
             addShipToArray(tempShip);
         }
         System.out.println(ships.size());
-        for (int number = 0; number < ships.size(); number++) {
-            if (ships.get(number).isHorizontal) {
-                for (int i = ships.get(number).leftUp.x; i < ships.get(number).leftUp.x + ships.get(number).length; i++) {
-                    field.cells[i][ships.get(number).leftUp.y].view = '\u2588'; //2B1A - потоплен
+        for (Ship ship : ships) {
+            if (ship.isHorizontal) {
+                for (int i = ship.leftUp.x; i < ship.leftUp.x + ship.length; i++) {
+                    field.cells[i][ship.leftUp.y].view = '\u2588'; //2B1A - потоплен
                 }
 
             }
-            if (!ships.get(number).isHorizontal) {
-                for (int j = ships.get(number).leftUp.y; j < ships.get(number).leftUp.y + ships.get(number).length; j++) {
-                    field.cells[ships.get(number).leftUp.x][j].view = '\u2588';
+            if (!ship.isHorizontal) {
+                for (int j = ship.leftUp.y; j < ship.leftUp.y + ship.length; j++) {
+                    field.cells[ship.leftUp.x][j].view = '\u2588';
                 }
 
             }
@@ -54,8 +54,8 @@ public class Ai {
     private void addShipToArray(Ship tempShip) {
         boolean intersect = false;
         if (field.isNotOutOfRange(tempShip)) {
-            for (int i = 0; i < ships.size(); i++) {
-                if (tempShip.isIntersect(ships.get(i))) {
+            for (Ship ship : ships) {
+                if (tempShip.isIntersect(ship)) {
                     intersect = true;
                 }
             }
@@ -64,28 +64,5 @@ public class Ai {
             }
         }
     }
-
-
-    public void putShipToField(int number) {
-
-        ships.get(number).leftUp.x = random.nextInt(10);
-        ships.get(number).leftUp.y = random.nextInt(10);
-
-        if (ships.get(number).isHorizontal) {
-            if (field.isNotOutOfRange(ships.get(number))) {
-                for (int i = ships.get(number).leftUp.x; i < ships.get(number).leftUp.x + ships.get(number).length; i++) {
-                    field.cells[i][ships.get(number).leftUp.y].view = '\u2588'; //2B1A - потоплен
-                }
-            } else putShipToField(number);
-        }
-        if (!ships.get(number).isHorizontal) {
-            if (field.isNotOutOfRange(ships.get(number))) {
-                for (int j = ships.get(number).leftUp.y; j < ships.get(number).leftUp.y + ships.get(number).length; j++) {
-                    field.cells[ships.get(number).leftUp.x][j].view = '\u2588';
-                }
-            } else putShipToField(number);
-        }
-    }
-
 }
 
