@@ -5,19 +5,23 @@ public class Game {
     Player player = new Player();
     Ai ai = new Ai();
 
-    public void loop(){
+    public void loop() {
         init();
-        player.autoCreateShips();
+        player.selectGameMode();
+
         ai.autoCreateShips();
-        show();
+        showFields();
     }
 
+
+
     private void init() {
+        System.out.println("ИГРА МОРСКОЙ БОЙ!");
         player.field.init('.');
         ai.field.init('.');
     }
 
-    private void show() {
+    private void showFields() {
         System.out.println("\t\t\tПоле ИГРОКА");
         player.field.show();
         System.out.println();
